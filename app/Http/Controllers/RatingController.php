@@ -14,10 +14,10 @@ class RatingController extends Controller {
     }
 
     public function store(Request $request, Book $book) {
-        $rating = Rating::firstOrCreate([
+        $rating = Rating::create([
                     'user_id' => $request->user()->id,
-                    'book_id' => $book->id], ['rating' => $request->rating]
-        );
+                    'book_id' => $book->id,
+                    'rating' => $request->rating]);
 
         return new RatingResource($rating);
     }
