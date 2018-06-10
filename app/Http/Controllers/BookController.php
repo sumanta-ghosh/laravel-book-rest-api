@@ -9,6 +9,13 @@ use App\Http\Resources\BookResource;
 class BookController extends Controller {
 
     /**
+     * Securing the API endpoints
+     */
+    public function __construct() {
+        $this->middleware('auth:api')->except(['index', 'show']);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
